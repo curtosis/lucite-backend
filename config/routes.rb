@@ -1,4 +1,12 @@
 LuciteBackend::Application.routes.draw do
+  resources :seasons
+
+  resources :shows
+
+  resources :judges
+
+  resources :member_companies
+
   #get \"users\/show\"
 
   root :to => "home#index"

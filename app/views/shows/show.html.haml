@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @show.name
+%p
+  %b Company:
+  = @show.company
+%p
+  %b Season:
+  = @show.season
+%p
+  %b Type:
+  = @show.type
+
+= link_to 'Edit', edit_show_path(@show)
+\|
+= link_to 'Back', shows_path

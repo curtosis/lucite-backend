@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @member_company.name
+
+= link_to 'Edit', edit_member_company_path(@member_company)
+\|
+= link_to 'Back', member_companies_path

@@ -1,3 +1,13 @@
-%h3 Home
-- @users.each do |user|
-  %p User: #{link_to user.name, user}
+%h3 LUCITE ADMINISTRATION SYSTEM
+
+%p
+  = "Current Season: #{ @current_season }"
+  = link_to "change"
+
+%ul 
+  %li= link_to "Manage Member Companies", member_companies_path
+  %li= link_to "Manage Judges", judges_path
+  %li= link_to "Manage Shows", shows_path
+  %li= link_to "Manage Ballots"
+  %li= link_to "Manage Seasons"
+  %li= link_to "Tabulation"

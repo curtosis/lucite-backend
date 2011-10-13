@@ -1,0 +1,19 @@
+%h1 Listing member_companies
+
+%table
+  %tr
+    %th Name
+    %th
+    %th
+    %th
+
+  - @member_companies.each do |member_company|
+    %tr
+      %td= member_company.name
+      %td= link_to 'Show', member_company
+      %td= link_to 'Edit', edit_member_company_path(member_company)
+      %td= link_to 'Destroy', member_company, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Member company', new_member_company_path

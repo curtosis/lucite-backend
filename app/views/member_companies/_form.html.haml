@@ -1,0 +1,30 @@
+= semantic_form_for @member_company do |f|
+  -if @member_company.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@member_company.errors.count, "error")} prohibited this member_company from being saved:"
+      %ul
+        - @member_company.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+    
+  .field
+    = f.label :code
+    = f.text_field :code, :size => 4
+
+  .field
+    = f.label :representative
+    = f.text_field :representative
+    
+  %h2 Physical Address
+  = f.inputs :for => :physical_address do |phys|
+    = render 'address_fields', :f => phys
+    
+  %h2 Mailing Address
+  = f.inputs :for => :mailing_address do |mail|
+    = render 'address_fields', :f => mail
+
+  .actions
+    = f.submit 'Save'
