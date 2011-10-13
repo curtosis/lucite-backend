@@ -1,4 +1,4 @@
-= form_for @season do |f|
+= semantic_form_for @season do |f|
   -if @season.errors.any?
     #error_explanation
       %h2= "#{pluralize(@season.errors.count, "error")} prohibited this season from being saved:"
@@ -10,10 +10,10 @@
     = f.label :name
     = f.text_field :name
   .field
-    = f.label :start
-    = f.date_select :start
+    = f.label :start_date
+    = f.date_select :start_date, :default => { :day => 1, :month => 1 }
   .field
-    = f.label :end
-    = f.date_select :end
+    = f.label :end_date
+    = f.date_select :end_date, :default => { :day => 31, :month => 12 }
   .actions
     = f.submit 'Save'

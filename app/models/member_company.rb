@@ -11,6 +11,10 @@ class MemberCompany
   embeds_one :mailing_address, :class_name => "Address"
 
   accepts_nested_attributes_for :physical_address, :mailing_address
+
+  validates_presence_of :name, :code
+  validates_uniqueness_of :name, :code
+
 end
 
 

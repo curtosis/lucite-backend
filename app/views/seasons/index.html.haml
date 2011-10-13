@@ -12,8 +12,8 @@
   - @seasons.each do |season|
     %tr
       %td= season.name
-      %td= season.start
-      %td= season.end
+      %td= season.start_date
+      %td= season.end_date
       %td= link_to 'Show', season
       %td= link_to 'Edit', edit_season_path(season)
       %td= link_to 'Destroy', season, :confirm => 'Are you sure?', :method => :delete

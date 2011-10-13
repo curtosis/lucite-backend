@@ -1,4 +1,4 @@
-= form_for @judge do |f|
+= semantic_form_for @judge do |f|
   -if @judge.errors.any?
     #error_explanation
       %h2= "#{pluralize(@judge.errors.count, "error")} prohibited this judge from being saved:"
