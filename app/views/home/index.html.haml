@@ -1,8 +1,8 @@
 %h3 LUCITE ADMINISTRATION SYSTEM
 
-= form_tag(set_working_season_path(@working_season)) do
+= form_tag(set_working_season_path(:working_season)) do
   Current Season: 
-  = select_tag "working-season", options_from_collection_for_select(Season.all, 'id', 'name'), :onchange => "this.form.submit();" 
+  = select_tag "working_season", options_from_collection_for_select(Season.all, 'id', 'name'), :onchange => "this.form.submit();"
 
 %ul 
   %li= link_to "Manage Member Companies", member_companies_path
