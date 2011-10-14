@@ -1,10 +1,9 @@
 LuciteBackend::Application.routes.draw do
-  resources :seasons
-
+  resources :seasons do
+    post 'set_working', :on => :member
+  end
   resources :shows
-
   resources :judges
-
   resources :member_companies
 
   #get \"users\/show\"

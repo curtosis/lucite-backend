@@ -7,12 +7,14 @@ class Season
   field :name, :type => String
   field :start_date, :type => Date
   field :end_date, :type => Date
-  field :locked, :type => Boolean
-  field :tabulated, :type => Boolean
-  field :closed, :type => Boolean
+  field :status, :type => Symbol
 
   validates_presence_of :name, :start_date, :end_date
   validates_uniqueness_of :name
 
   attr_accessible :name, :start_date, :end_date
+
+  def editable?
+    (defined? status) and (status === :open or status === :created)
+  end
 end

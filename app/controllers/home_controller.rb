@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   def index
     @users = User.all
-    @current_season = "2011"
+    @working_season = Season.last
   end
+
 end

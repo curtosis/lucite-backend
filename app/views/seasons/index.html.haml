@@ -1,10 +1,11 @@
-%h1 Listing seasons
+%h1 Season Maintenance
 
 %table
   %tr
     %th Name
     %th Start
     %th End
+    %th Status
     %th
     %th
     %th
@@ -14,8 +15,11 @@
       %td= season.name
       %td= season.start_date
       %td= season.end_date
+      %td= season.status
       %td= link_to 'Show', season
-      %td= link_to 'Edit', edit_season_path(season)
+      %td
+        - if season.editable? 
+          = link_to 'Edit', edit_season_path(season)
       %td= link_to 'Destroy', season, :confirm => 'Are you sure?', :method => :delete
 
 %br

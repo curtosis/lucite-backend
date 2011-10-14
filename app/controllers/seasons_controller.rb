@@ -2,7 +2,7 @@ class SeasonsController < ApplicationController
   # GET /seasons
   # GET /seasons.json
   def index
-    @seasons = Season.all
+    @seasons = Season.excludes status: :deleted
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,7 +25,6 @@ class SeasonsController < ApplicationController
   # GET /seasons/new.json
   def new
     @season = Season.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @season }
@@ -41,7 +40,7 @@ class SeasonsController < ApplicationController
   # POST /seasons.json
   def create
     @season = Season.new(params[:season])
-
+    @season.status = :created
     respond_to do |format|
       if @season.save
         format.html { redirect_to @season, notice: 'Season was successfully created.' }
@@ -79,5 +78,11 @@ class SeasonsController < ApplicationController
       format.html { redirect_to seasons_url }
       format.json { head :ok }
     end
+  end
+
+  # POST /seasons/1/set_working
+  def set_working
+    season = Season.find(params[:id])
+    @session[:working_season] = season
   end
 end
