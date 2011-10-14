@@ -2,7 +2,7 @@
 
 = form_tag(set_working_seasons_path) do
   Current Season: 
-  = select_tag "working_season", options_from_collection_for_select(@available_seasons, 'id', 'name', @working_season.id), :onchange => "this.form.submit();"
+  = select_tag "working_season_id", options_from_collection_for_select(available_seasons, 'id', 'name', session[:working_season_id]), :onchange => "this.form.submit();"
   
 %ul 
   %li= link_to "Manage Member Companies", member_companies_path

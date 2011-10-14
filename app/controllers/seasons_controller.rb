@@ -82,8 +82,8 @@ class SeasonsController < ApplicationController
 
   # POST /seasons/1/set_working
   def set_working
-    season = Season.find(params[:working_season])
-    session[:working_season] = season
+    season = Season.find(params[:working_season_id])
+    session[:working_season_id] = season.id
     redirect_to :back
   end
 end
