@@ -8,4 +8,9 @@ module ApplicationHelper
     MemberCompany.all
   end
   
+  def show_types
+    [["Play", "Play"],
+     ["Musical", "Musical"]]
+  end
+  
 end

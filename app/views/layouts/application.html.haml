@@ -18,3 +18,7 @@
       #main{:role => "main"}
         = yield
       %footer
+        %p
+          \(Season: 
+          = session[:working_season_id]
+          \)

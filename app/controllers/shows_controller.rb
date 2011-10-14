@@ -40,6 +40,7 @@ class ShowsController < ApplicationController
   # POST /shows
   # POST /shows.json
   def create
+    @season = Season.find(session[:working_season_id])
     @show = Show.new(params[:show])
 
     respond_to do |format|
