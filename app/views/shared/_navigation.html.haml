@@ -1,6 +1,6 @@
 %li
   Season: 
-  = working_season_name
+  = link_to working_season_name, root_path
 - if user_signed_in?
   %li
     = link_to('Logout', destroy_user_session_path, :method=>'delete')

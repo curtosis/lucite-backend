@@ -1,18 +1,19 @@
-%h1 Listing member_companies
+%h1 Member Company Management
 
-%table
+%table.gridtable
   %tr
     %th Name
-    %th
-    %th
     %th
 
   - @member_companies.each do |member_company|
     %tr
       %td= member_company.name
-      %td= link_to 'Show', member_company
-      %td= link_to 'Edit', edit_member_company_path(member_company)
-      %td= link_to 'Destroy', member_company, :confirm => 'Are you sure?', :method => :delete
+      %td
+        = link_to 'Show', member_company
+        \|
+        = link_to 'Edit', edit_member_company_path(member_company)
+        \|
+        = link_to 'Destroy', member_company, :confirm => 'Are you sure?', :method => :delete
 
 %br
 
