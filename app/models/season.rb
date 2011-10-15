@@ -14,7 +14,13 @@ class Season
 
   attr_accessible :name, :start_date, :end_date
 
+  embeds_many :shows
+  
   def editable?
     (defined? status) and (status === :open or status === :created)
+  end
+  
+  def self.working(session)
+    find(session[:working_season_id])
   end
 end

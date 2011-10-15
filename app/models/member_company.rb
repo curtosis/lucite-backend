@@ -10,6 +10,8 @@ class MemberCompany
   embeds_one :physical_address, :class_name => "Address"
   embeds_one :mailing_address, :class_name => "Address"
 
+  #has_many :shows
+
   accepts_nested_attributes_for :physical_address, :mailing_address
 
   validates_presence_of :name, :code

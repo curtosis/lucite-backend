@@ -7,7 +7,6 @@
           %li= msg
   = f.inputs do
     = f.input :name, :input_html => { :size => 50 }
-    = f.input :season, :as => :select, :collection => available_seasons
     = f.input :type, :as => :select, :collection => show_types
-    = f.input :company, :as => :select, :collection => member_companies
+    = f.input :member_company, :as => :select, :collection => member_companies
   = f.buttons
