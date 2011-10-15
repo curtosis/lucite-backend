@@ -4,12 +4,12 @@ class Show
   include Mongoid::Timestamps
   
   embedded_in :season
-
   belongs_to :member_company 
     
   field :name, :type => String
   field :type, :type => String
 
+  embeds_many :ballots
 
   validates_presence_of :name, :type
   
