@@ -3,13 +3,17 @@
 %table.gridtable
   %tr
     %th Name
-    %th Company
+    %th Member Company
+    %th Email
+    %th Adjudicator Number
     %th
 
   - @adjudicators.each do |adjudicator|
     %tr
       %td= adjudicator.name
-      %td= adjudicator.company
+      %td= adjudicator.member_company.name
+      %td= adjudicator.email
+      %td= adjudicator.adjudicator_number
       %td
         = link_to 'Show', adjudicator
         \|

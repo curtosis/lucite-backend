@@ -9,9 +9,9 @@ class MemberCompany
   
   embeds_one :physical_address, :class_name => "Address"
   embeds_one :mailing_address, :class_name => "Address"
-
+  has_many :adjudicators
   # can't do this because shows are embedded in a season!
-  #has_many :shows
+  # has_many :shows
 
   accepts_nested_attributes_for :physical_address, :mailing_address
 

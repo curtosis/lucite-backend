@@ -4,8 +4,14 @@
   %b Name:
   = @adjudicator.name
 %p
-  %b Company:
-  = @adjudicator.company
+  %b Email:
+  = @adjudicator.email
+%p
+  %b Member Company:
+  = @adjudicator.member_company.name
+%p
+  %b Adjudicator Number:
+  = @adjudicator.adjudicator_number
 
 = link_to 'Edit', edit_adjudicator_path(@adjudicator)
 \|

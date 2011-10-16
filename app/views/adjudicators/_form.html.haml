@@ -5,12 +5,10 @@
       %ul
         - @adjudicator.errors.full_messages.each do |msg|
           %li= msg
+  = f.inputs do
+    = f.input :name, :input_html => { :size => 50 }
+    = f.input :email, :input_html => { :size => 50 }
+    = f.input :member_company, :as => :select, :collection => member_companies
+    = f.input :adjudicator_number, :as => :select, :collection => adjudicator_numbers
+  = f.buttons
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :company
-    = f.collection_select :company, MemberCompany.all, :code, :name 
-  .actions
-    = f.submit 'Save'
