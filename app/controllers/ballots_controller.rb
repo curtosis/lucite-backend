@@ -34,7 +34,7 @@ class BallotsController < ApplicationController
       
       sballot = encrypt_and_generate_ballot_record(ballot, adjudicator)
       
-      puts "Ballot: #{sballot}"
+      puts "Ballot encrypted: adjudicator=#{sballot[:adjudicator_code]}, hash=#{sballot[:ballot_hash]}"
       show.ballots.create(sballot)
       
       # send the hash as a receipt for now

@@ -5,7 +5,7 @@
     %th Name
     %th Company
     %th Type
-    %th Ballots Received
+    %th Ballot Status
     %th
 
   - @shows.each do |show|
@@ -13,7 +13,11 @@
       %td= show.name
       %td= show.member_company.name
       %td= show.type
-      %td= show.ballots.count
+      %td
+        - show.ballots.each do |i|
+          =image_tag "16/finished-work.png"
+        - (1..(10-show.ballots.count)).each do
+          =image_tag "16/process.png"
       %td
         = link_to 'Show', show
         \|
