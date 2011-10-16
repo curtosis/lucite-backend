@@ -6,13 +6,17 @@ LuciteBackend::Application.routes.draw do
   resources :adjudicators
   resources :member_companies
 
-  #get \"users\/show\"
+  scope "/api/raw_ballots" do
+    constraints(:accept => "application/vnd.lucite-v1+json") do
+      post "/submit"  => "ballots#create"
+    end
+  end
+
 
   root :to => "home#index"
 
   devise_for :users
   resources :users, :only => :show
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

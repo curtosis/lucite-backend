@@ -6,7 +6,7 @@ class MemberCompaniesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @member_companies }
+      format.json { render json: MemberCompany.only("name", "_id")  }  # should move the limited output to API 
     end
   end
 
