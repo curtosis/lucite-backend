@@ -24,7 +24,8 @@ describe MemberCompaniesController do
   # MemberCompany. As you add validations to MemberCompany, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    { :name => 'Test Company',
+      :code => 'TEST'}
   end
 
   describe "GET index" do

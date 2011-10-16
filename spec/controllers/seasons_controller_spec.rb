@@ -24,7 +24,9 @@ describe SeasonsController do
   # Season. As you add validations to Season, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    { :name => 'Test Season',
+      :start_date => '2000-01-01',
+      :end_date => '2000-12-31' }
   end
 
   describe "GET index" do

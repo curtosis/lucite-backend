@@ -4,7 +4,7 @@ class Ballot
   include Mongoid::Timestamps
   
   field :secure_data, :type => String
-  field :judge_code, :type => String
+  field :adjudicator_code, :type => String
   
   embedded_in :show
   

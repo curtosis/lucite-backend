@@ -24,12 +24,19 @@ describe ShowsController do
   # Show. As you add validations to Show, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    {
+      :name => 'Test Show',
+      :type => 'Play'
+    }
+  end
+  
+  before(:each) do
+    @season = Factory.create(:season)
   end
 
   describe "GET index" do
     it "assigns all shows as @shows" do
-      show = Show.create! valid_attributes
+      show = @season.shows.create! valid_attributes
       get :index
       assigns(:shows).should eq([show])
     end

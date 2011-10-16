@@ -18,6 +18,10 @@ module ApplicationHelper
   end
   
   def working_season_name
-    working_season.name || 'no working season'
+    begin
+      working_season.name 
+    rescue
+      'working season not set'
+    end
   end
 end

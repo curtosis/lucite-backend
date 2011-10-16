@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @adjudicator.name
+%p
+  %b Company:
+  = @adjudicator.company
+
+= link_to 'Edit', edit_adjudicator_path(@adjudicator)
+\|
+= link_to 'Back', adjudicators_path

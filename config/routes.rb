@@ -3,7 +3,7 @@ LuciteBackend::Application.routes.draw do
     post 'set_working', :on => :collection
   end
   resources :shows
-  resources :judges
+  resources :adjudicators
   resources :member_companies
 
   #get \"users\/show\"

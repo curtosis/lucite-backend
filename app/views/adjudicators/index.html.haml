@@ -1,0 +1,22 @@
+%h1 Manage Adjudicators
+
+%table.gridtable
+  %tr
+    %th Name
+    %th Company
+    %th
+
+  - @adjudicators.each do |adjudicator|
+    %tr
+      %td= adjudicator.name
+      %td= adjudicator.company
+      %td
+        = link_to 'Show', adjudicator
+        \|
+        = link_to 'Edit', edit_adjudicator_path(adjudicator)
+        \|
+        = link_to 'Destroy', adjudicator, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Adjudicator', new_adjudicator_path

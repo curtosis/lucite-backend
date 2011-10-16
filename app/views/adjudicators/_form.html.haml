@@ -1,9 +1,9 @@
-= semantic_form_for @judge do |f|
-  -if @judge.errors.any?
+= semantic_form_for @adjudicator do |f|
+  -if @adjudicator.errors.any?
     #error_explanation
-      %h2= "#{pluralize(@judge.errors.count, "error")} prohibited this judge from being saved:"
+      %h2= "#{pluralize(@adjudicator.errors.count, "error")} prohibited this adjudicator from being saved:"
       %ul
-        - @judge.errors.full_messages.each do |msg|
+        - @adjudicator.errors.full_messages.each do |msg|
           %li= msg
 
   .field

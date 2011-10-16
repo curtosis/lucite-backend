@@ -21,6 +21,10 @@ class Season
   end
   
   def self.working(session)
-    find(session[:working_season_id])
+    begin
+      find(session[:working_season_id])
+    rescue
+      session[:working_season_id] = nil
+    end
   end
 end
