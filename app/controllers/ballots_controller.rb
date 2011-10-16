@@ -1,4 +1,5 @@
 require 'yajl'
+require 'crypter'
 
 class BallotsController < ApplicationController
   
@@ -31,8 +32,14 @@ class BallotsController < ApplicationController
       # build, encrypt, and save
       ballot = build_ballot(raw_ballot)
       
-      # this will eventually be a receipt
-      render :json => Time.now.to_f.to_json
+      sballot = encrypt_and_generate_ballot_record(ballot, adjudicator)
+      
+      puts "Ballot: #{sballot}"
+      show.ballots.create(sballot)
+      
+      # send the hash as a receipt for now
+      render :json => sballot[:ballot_hash].to_json
+      
       
     rescue Exception => e
       puts e.message
@@ -48,7 +55,8 @@ class BallotsController < ApplicationController
       puts "found company (#{company.name})"
       shows = season.shows.where(:name => show_name)
       puts "there are #{shows.count} potential matches"
-      show = shows.where(:member_company => company)
+      show = shows.detect { |s|  s.member_company == company  }
+      
       puts "found show (#{show.name})"
       return season, show
     end
@@ -58,12 +66,17 @@ class BallotsController < ApplicationController
     end
     
     def build_ballot(raw_ballot)
-      #currently no-op
-      raw_ballot
+      #currently just re-jsonifies the raw_ballot portion.
+      raw_ballot.to_json
     end
     
-    def encrypt_and_save_ballot
-      
+    def encrypt_and_generate_ballot_record(ballot, adjudicator)
+      crypter = Crypter.new
+      sballot = Hash.new
+      sballot[:adjudicator_code] = crypter.generate_hash(adjudicator.name + '360Q')
+      sballot[:secure_data] =  crypter.encrypt_data('sparkleMotion', ballot)
+      sballot[:ballot_hash] = crypter.generate_hash(ballot)
+      return sballot
     end 
   
 end

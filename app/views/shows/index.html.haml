@@ -5,6 +5,7 @@
     %th Name
     %th Company
     %th Type
+    %th Ballots Received
     %th
 
   - @shows.each do |show|
@@ -12,6 +13,7 @@
       %td= show.name
       %td= show.member_company.name
       %td= show.type
+      %td= show.ballots.count
       %td
         = link_to 'Show', show
         \|
