@@ -36,17 +36,17 @@ group :development, :test do
     gem "guard-rspec", ">= 0.4.3", :group => :development
     gem "guard-cucumber", ">= 0.6.1", :group => :development
     gem "cucumber-rails", ">= 1.1.1", :group => :test
-    case HOST_OS
-      when /darwin/i
-        gem 'rb-fsevent', :group => :development
-        gem 'growl', :group => :development
-      when /linux/i
-        gem 'libnotify', :group => :development
-        gem 'rb-inotify', :group => :development
-      when /mswin|windows/i
-        gem 'rb-fchange', :group => :development
-        gem 'win32console', :group => :development
-        gem 'rb-notifu', :group => :development
-    end
+#    case HOST_OS
+#      when /darwin/i
+#        gem 'rb-fsevent', :group => :development
+#        gem 'growl', :group => :development
+#      when /linux/i
+#        gem 'libnotify', :group => :development
+#        gem 'rb-inotify', :group => :development
+#      when /mswin|windows/i
+#        gem 'rb-fchange', :group => :development
+#        gem 'win32console', :group => :development
+#        gem 'rb-notifu', :group => :development
+#    end
 end
 
