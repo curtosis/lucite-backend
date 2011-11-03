@@ -28,6 +28,7 @@ gem "cucumber-rails", ">= 1.1.1", :group => :test
 gem "capybara", ">= 1.1.1", :group => :test
 gem "launchy", ">= 2.0.5", :group => :test
 gem "guard", ">= 0.6.2", :group => :development
+group :development, :test do
 case HOST_OS
   when /darwin/i
     gem 'rb-fsevent', :group => :development
@@ -39,6 +40,7 @@ case HOST_OS
     gem 'rb-fchange', :group => :development
     gem 'win32console', :group => :development
     gem 'rb-notifu', :group => :development
+end
 end
 gem "guard-bundler", ">= 0.1.3", :group => :development
 gem "guard-rails", ">= 0.0.3", :group => :development
