@@ -9,8 +9,13 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 gem 'jquery-rails'
+group :production do
+  gem 'therubyracer-heroku'
+end
+group :development, :test do
 if HOST_OS =~ /linux/i
   gem 'therubyracer', '>= 0.8.2'
+end
 end
 group :production do
   gem 'pg'
