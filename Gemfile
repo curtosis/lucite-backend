@@ -1,28 +1,17 @@
 require 'rbconfig'
 HOST_OS = Config::CONFIG['host_os']
+
 source 'http://rubygems.org'
 gem 'rails', '3.1.1'
 gem 'rack', '1.3.3'
+gem 'jquery-rails'
+
 group :assets do
   gem 'sass-rails',   '~> 3.1.4'
   gem 'coffee-rails', '~> 3.1.1'
   gem 'uglifier', '>= 1.0.3'
 end
-gem 'jquery-rails'
-group :production do
-  gem 'therubyracer-heroku'
-end
-group :development, :test do
-if HOST_OS =~ /linux/i
-  gem 'therubyracer', '>= 0.8.2'
-end
-end
-group :production do
-  gem 'pg'
-end
-group :development, :test do
-  gem 'sqlite3'
-end
+
 gem "haml", ">= 3.1.2"
 gem "haml-rails", ">= 0.3.4", :group => :development
 gem "rspec-rails", ">= 2.6.1", :group => [:development, :test]
