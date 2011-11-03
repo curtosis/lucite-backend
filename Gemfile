@@ -12,11 +12,11 @@ gem 'jquery-rails'
 if HOST_OS =~ /linux/i
   gem 'therubyracer', '>= 0.8.2'
 end
-group :development, :test do
-  gem "sqlite3"
-end
 group :production do
   gem 'pg'
+end
+group :development, :test do
+  gem "sqlite3"
 end
 gem "haml", ">= 3.1.2"
 gem "haml-rails", ">= 0.3.4", :group => :development
