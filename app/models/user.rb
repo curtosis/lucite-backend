@@ -16,7 +16,7 @@ class User
   # :omniauthable - adds OmniAuth support
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :timeoutable,
+  devise :database_authenticatable, :timeoutable,
          :recoverable, :trackable, :validatable, :lockable
 
   field :name

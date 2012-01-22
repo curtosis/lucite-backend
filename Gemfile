@@ -13,6 +13,7 @@ gem "frontend-helpers"
 gem "formtastic"
 gem 'nested_form', :git => "git://github.com/ryanb/nested_form"
 gem 'yajl-ruby'
+gem 'encryptor'
 
 group :assets do
   gem 'sass-rails',   '~> 3.1.4'

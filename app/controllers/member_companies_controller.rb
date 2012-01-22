@@ -1,4 +1,7 @@
 class MemberCompaniesController < ApplicationController
+
+  before_filter :authenticate_user!
+  
   # GET /member_companies
   # GET /member_companies.json
   def index

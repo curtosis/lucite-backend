@@ -1,0 +1,14 @@
+%h1 Ballots Received
+
+%table.gridtable
+  %tr
+    %th Show
+    %th Date
+    %th Judge
+  - @ballots.each do |ballot|
+    %tr
+      %td= ballot[:show_title]
+      %td= ballot[:date_viewed]
+      %td= ballot[:adjudicator]
+
+%br

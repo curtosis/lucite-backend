@@ -9,23 +9,13 @@ class Crypter
   end
   
   def encrypt_data(key, text)
-    c = OpenSSL::Cipher.new('aes-256-cbc')
-    c.encrypt
-    c.key = k = Digest::SHA2.hexdigest(key)
-    c.iv = k
-    e = c.update(text)
-    e << c.final
-    r = Base64::encode64(e)
-    return r
+    hkey = Digest::SHA2.hexdigest(key)
+    return Base64.encode64(Encryptor.encrypt(:key => hkey, :value => text))
   end
     
   def decrypt_string(key, data)
-    c = OpenSSL::Cipher.new('aes-256-cbc')
-    c.decrypt
-    c.key = Digest::SHA2.hexdigest(key)
-    d = c.update(Base64.decode64(data))
-    d << c.final
-    d
+    hkey = Digest::SHA2.hexdigest(key)
+    return Encryptor.decrypt(:key => hkey, :value => Base64::decode64(data))
   end
   
 end

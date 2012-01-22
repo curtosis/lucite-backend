@@ -11,32 +11,34 @@ class BallotsController < ApplicationController
   def create
     begin
       parse = Yajl::Parser.parse(request.body.read)
-      raw_ballot = parse['raw_ballot']
-      puts "received ballot (show title: #{raw_ballot['show_title']})"
+      received_ballot = parse['raw_ballot']
+      puts "received ballot (show title: #{received_ballot['show_title']})"
       
       # find show
-      season, show = find_and_validate_season_and_show(raw_ballot['show_title'], raw_ballot['producing_company'])
-      raise "Could not locate season" if season.nil?
-      raise "Could not locate show" if show.nil?
-      puts "Located season (#{season.name}) and show (#{show.name})"
+      # season, show = find_and_validate_season_and_show(raw_ballot['show_title'], raw_ballot['producing_company'])
+      # raise "Could not locate season" if season.nil?
+      # raise "Could not locate show" if show.nil?
+      # puts "Located season (#{season.name}) and show (#{show.name})"
       
-      # find judge
-      # it's not (currently) fatal if we can't find the adjudicator
-      adjudicator = find_and_validate_adjudicator(raw_ballot['adjudicator_company'], raw_ballot['adjudicator_number'])
-      if adjudicator.nil?
-        puts "Could not locate adjudicator"
-      else
-        "Located adjudicator (#{adjudicator.name})"
-      end
+      # # find judge
+      # # it's not (currently) fatal if we can't find the adjudicator
+      # adjudicator = find_and_validate_adjudicator(raw_ballot['adjudicator_company'], raw_ballot['adjudicator_number'])
+      # if adjudicator.nil?
+      #   puts "Could not locate adjudicator"
+      # else
+      #   "Located adjudicator (#{adjudicator.name})"
+      # end
       
       # build, encrypt, and save
-      ballot = build_ballot(raw_ballot)
+      ballot = build_ballot(received_ballot)
       
+      adjudicator = received_ballot['adjudicator_number'] + "@" + received_ballot['adjudicator_company']
       sballot = encrypt_and_generate_ballot_record(ballot, adjudicator)
       
       puts "Ballot encrypted: adjudicator=#{sballot[:adjudicator_code]}, hash=#{sballot[:ballot_hash]}"
-      show.ballots.create(sballot)
-      
+      #show.ballots.create(sballot)
+      SecureBallot.create(sballot)
+
       # send the hash as a receipt for now
       render :json => sballot[:ballot_hash].to_json
       
@@ -70,10 +72,10 @@ class BallotsController < ApplicationController
       raw_ballot.to_json
     end
     
-    def encrypt_and_generate_ballot_record(ballot, adjudicator)
+    def encrypt_and_generate_ballot_record(ballot, adjudicator_name)
       crypter = Crypter.new
       sballot = Hash.new
-      sballot[:adjudicator_code] = crypter.generate_hash(adjudicator.name + '360Q')
+      sballot[:adjudicator_code] = crypter.generate_hash(adjudicator_name + '360Q')
       sballot[:secure_data] =  crypter.encrypt_data('sparkleMotion', ballot)
       sballot[:ballot_hash] = crypter.generate_hash(ballot)
       return sballot

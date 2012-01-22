@@ -1,4 +1,6 @@
 class AdjudicatorsController < ApplicationController
+
+  before_filter :authenticate_user!
   # GET /adjudicators
   # GET /adjudicators.json
   def index

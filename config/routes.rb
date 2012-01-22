@@ -18,6 +18,9 @@ LuciteBackend::Application.routes.draw do
   devise_for :users
   resources :users, :only => :show
 
+  devise_for :secure_ballots
+  resources :secure_ballots, :only => :index
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
