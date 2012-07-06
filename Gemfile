@@ -14,6 +14,7 @@ gem "formtastic"
 gem 'nested_form', :git => "git://github.com/ryanb/nested_form"
 gem 'yajl-ruby'
 gem 'encryptor'
+gem 'newrelic_rpm'
 
 group :assets do
   gem 'sass-rails',   '~> 3.1.4'
