@@ -2,8 +2,8 @@ require 'rbconfig'
 HOST_OS = Config::CONFIG['host_os']
 
 source 'http://rubygems.org'
-gem 'rails', '3.1.1'
-gem 'rack', '1.3.3'
+gem 'rails', '3.1.10'
+gem 'rack', '1.3.6'
 gem 'jquery-rails'
 gem "haml", ">= 3.1.2"
 gem "bson_ext", ">= 1.4.0"
